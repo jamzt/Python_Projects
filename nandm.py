@@ -64,12 +64,10 @@ def nice_mean(nice,mean,name):
         if pick == "n":
             print("\nThe stranger walks away smiling...")
             nice = (nice + 1)
-            nice_sound.play()
             stop = False
         if pick == "m":
             print("\nThe stranger glances at you \nmenacingly and storms off...")
             mean = (mean + 1)
-            mean_sound.play()
             stop = False
     score(nice,mean,name) # pass the 3 variables to the score()
 
@@ -86,6 +84,7 @@ def score(nice,mean,name):
         win(nice,mean,name)
     if mean > 2: # if condition is valid, call lose function passing in the variables so it can use them
         lose(nice,mean,name)
+        
     else:
         nice_mean(nice,mean,name)
     
@@ -95,6 +94,7 @@ def win(nice,mean,name):
     #substitute the {} wildcards with our variable valuies
     print("\nNice job {}, you won! \nEveryone loves you and you've \nmade lots of friends along the way!".format(name))
     #call again function and pass in our variables
+    nice_sound.play()
     nice_sound.stop()
     again(nice,mean,name)
 
@@ -102,6 +102,7 @@ def lose(nice,mean,name):
     #substitute the {} wildcards with our variable valuies
     print("\nAhhh too bad, game over! \n(), you live in a dirty beat-up \nvan by the river, wretched and alone!".format(name))
     #call again function and pass in our variables
+    mean_sound.play()
     mean_sound.stop()
     again(nice,mean,name)
 
@@ -127,7 +128,7 @@ def reset(nice,mean,name):
     nice = 0
     mean = 0
     #notice, i don't reset the name variable as the same user has electd to play again
-
+    start(nice,mean,name)
 
 
 if __name__ == "__main__":
