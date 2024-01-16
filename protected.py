@@ -1,10 +1,10 @@
 class ProtectedVar:
     def __init__ (self):
-        self.protectedVar = "This is the first protected function."
+        self._protectedVar = "This is the first protected function."
 #using protected method to create obect
 object = ProtectedVar()
-object.protectedVar = "This is a new function."
-print(object.protectedVar)
+object._protectedVar = "This is a new function."
+print(object._protectedVar)
 
 
 class Protected:
