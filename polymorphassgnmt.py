@@ -13,14 +13,17 @@ class Planets:
 #child class Mars
 class Mars(Planets):
     def __init__(self, name, composition, location, age, distance, temperature):
+        #calling parent class's function
         super().__init__(name, composition, location, age)
         self.distance = distance
         self.temperature = temperature
 
+#overraiding original name, composition, location, age parameters with Mars's method
     def planet_info(self):
         print("{self.name} is a {self.composition} planet in the {self.location}. It is {self.age} million years old. It's {self.distance} away from our planet and has an average temperature of {self.temperature} Celsius.")
 
-# child class Venus  
+
+# child class Venus overraiding orginal name, composition, location, age parameters with Venus's method
 class Venus(Planets):
     def __init__(self, name, composition, location, age, length_day, length_year):
         super().__init__(name, composition, location, age)

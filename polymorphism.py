@@ -15,7 +15,7 @@ class User:
 
 #child class employee
 class Employee(User):
-    base_pay = 11.00
+    base_pay = 11.00  
     department = "General"
     pin_number = "3980"
 
