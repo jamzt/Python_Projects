@@ -10,7 +10,7 @@ class ParentWindow(Frame):
         self.btn = Button(self.master, text="Default HTML Page", width=30, height=2, command=self.defaultHTML)
         self.btn.grid(padx=(10,10) , pady=(10,10))
 
-        self.btn_custom = Button(self.master, text="Custom HTML Page", width=30, height=2, command=self.customHTML)
+        self.btn_cstm = Button(self.master, text="Custom HTML Page", width=30, height=2, command=self.customHTML)
         self.btn_cstm.grid(padx=(10, 10), pady=(10, 10))
 
     def defaultHTML(self):
