@@ -8,7 +8,7 @@ class ParentWindow(Frame):
         self.master.title("Web Page Generator")
     
         self.btn = Button(self.master, text="Default HTML Page", width=30, height=2, command=self.defaultHTML)
-        self.btn.grid(padx=(10,10) , pady=(10,10))
+        self.btn.grid(padx=(10,10), pady=(10,10))
 
         self.btn_cstm = Button(self.master, text="Custom HTML Page", width=30, height=2, command=self.customHTML)
         self.btn_cstm.grid(padx=(10, 10), pady=(10, 10))
@@ -22,9 +22,9 @@ class ParentWindow(Frame):
         webbrowser.open_new_tab("index.html")
 
     def customHTML(self):
-        htmlText = input("Enter custom text and press Submit Custom Text")
+        user_input = input("Enter custom text and press Submit Custom Text")
         htmlFile = open("index.html", "w")
-        htmlContent = "<html>\n<body>\n<h1>" + htmlText + "</h1>\n</body>\n</html>"
+        htmlContent = "<html>\n<body>\n<h1>" + {user_input} + "</h1>\n</body>\n</html>"
         htmlFile.write(htmlContent)
         htmlFile.close()
         webbrowser.open_new_tab("index.html")
