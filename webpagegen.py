@@ -30,7 +30,8 @@ class ParentWindow(Frame):
         webbrowser.open_new_tab("index.html")
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    root = Tk()
     App = ParentWindow(root)
     root.mainloop()
 
+#input field in the GUI 

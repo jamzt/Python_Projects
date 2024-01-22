@@ -27,7 +27,7 @@ class ParentWindow(Frame):
         #create button to select destination of files from destination dir
         self.destDir_btn = Button(text="Select Destination", width=20, command=self.destDir)
         #positions source button in GUI using tkinter grid()
-        self.destDir_bin.grid(row=1, column=0, padx=(20, 10), pady=(15,10))
+        self.destDir_btn.grid(row=1, column=0, padx=(20, 10), pady=(15,10))
 
         #creates entry for destiantion dir selection
         self.destination_dir = Entry(width=75)
@@ -36,7 +36,7 @@ class ParentWindow(Frame):
         self.destination_dir.grid(row=1, column=1, columnspan=2, padx=(20, 10), pady=(15,10))
 
         #create btn to transfer files
-        self.transfer_btn = Button(self, text="Transfer Files", width=20, command=self.transferFiles)
+        self.transfer_btn = Button(text="Transfer Files", width=20, command=self.transferFiles)
         #positions transfer files btn
         self.transfer_btn.grid(row=2, column=1, padx=(200, 0), pady=(0,15))
         #creates an Exit button
@@ -75,20 +75,19 @@ class ParentWindow(Frame):
         current_time = datetime.now()
 
     #runs through each file in source dir
-    for i in source_files:
-        source_file_path = os.path.join(source, i)
+        for i in source_files:
+            source_file_path = os.path.join(source, i)
+            #check if file chnaged in last 24h
+            mod_time = datetime.fromtimestamp(os.path.getmtime(source_file_path))
+            time_diff = current_time - mod_time 
+            if time_diff < timedelta(hours=24):
+                #move file to desDir
+                shutil.mov(source_file_path, destination)
+                print("{i} was transferred.")
 
-        #check if file chnaged in last 24h
-        mod_time = datetime.fromtimestamp(os.path.getmtime(source_file_path))
-        time_diff = current_time - mod_time 
-        if time_diff < timedelta(hours=24):
-            #move file to desDir
-            shutil.mov(source_file_path, destination)
-            print("{i} was transferred.")
-
-            #move each file from the source to the destination
-            #shutil.move(source + '/' + i, destination)
-            #print(i + ' was successfully transferred.')
+                #move each file from the source to the destination
+                #shutil.move(source + '/' + i, destination)
+                #print(i + ' was successfully transferred.')
         
 
 
@@ -108,3 +107,4 @@ if __name__ == "__main__":
     App = ParentWindow(root)
     root.mainloop()
 
+# look through your code to see why that transfer button isn't appearing in the GUI.
